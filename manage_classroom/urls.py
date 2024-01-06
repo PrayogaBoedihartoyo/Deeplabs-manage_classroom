@@ -24,23 +24,34 @@ def signin(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            messages.success(request, 'Login successful!')
-            return redirect('dashboard')
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            if username == 'admin' and password == 'admin':
+                user = form.get_user()
+                login(request, user)
+                messages.success(request, 'Login successful!')
+                return redirect('home')
+            else:
+                messages.error(request, 'Incorrect username or password. Please try again.')
         else:
             messages.error(request, 'Error logging in. Please check your credentials.')
     else:
         form = AuthenticationForm()
-    return render(request, '../templates/login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 def dashboard(request):
     return render(request, '../templates/dashboard.html')
 
 
+def home(request):
+    return render(request, '../templates/home.html')
+
+
 urlpatterns = [
     path('', dashboard, name='dashboard'),
     path('login', signin, name='login'),
     path('signup', signup, name='signup'),
+    path('home', home, name='home'),
 ]
