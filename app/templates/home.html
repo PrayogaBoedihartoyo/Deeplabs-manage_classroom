@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #3498db;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        /* Animasi saat elemen muncul */
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animasi perubahan warna latar belakang */
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #3498db;
+            }
+            50% {
+                background-color: #e74c3c;
+            }
+            100% {
+                background-color: #3498db;
+            }
+        }
+
+        body {
+            animation: backgroundAnimation 10s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>Explore the world of possibilities!</p>
+    </div>
+
+    <script>
+        // Tambahkan script untuk menambahkan kelas 'visible' pada elemen container setelah halaman dimuat
+        document.addEventListener("DOMContentLoaded", function() {
+            var container = document.querySelector('.container');
+            container.classList.add('visible');
+        });
+    </script>
+</body>
+</html>
