@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from .forms import RegisterForm
@@ -23,6 +24,7 @@ def signup(request):
             return render(request, '../templates/signup.html', {'form': form})
 
 
+@csrf_exempt
 def signin(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
