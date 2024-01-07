@@ -36,23 +36,23 @@
 
         .teacher-students {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-around; /* Mengubah space-between ke space-around agar lebih rapi */
             align-items: flex-start;
             flex-wrap: wrap;
         }
 
         .teacher-info,
         .students-list {
-            width: 48%; /* Adjust as needed */
-            margin: 20px;
-            background-color: #d3d9df; /* Change to desired background color */
+            width: 48%; /* Sesuaikan dengan lebar yang diinginkan */
+            margin: 10px 0; /* Sesuaikan margin agar lebih rapi */
+            background-color: #d3d9df;
             padding: 15px;
             border-radius: 5px;
-            text-align: left; /* Make text left-aligned */
+            text-align: left;
         }
 
         .teacher-info {
-            margin-right: auto;
+            margin-right: 0;
         }
 
         .student-item {
@@ -63,12 +63,50 @@
             background-color: #ffffff;
         }
 
+        .btn-primary {
+            background-color: #FFA500;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-success {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover,
+        .btn-success:hover,
+        .btn-danger:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: #fff;
+        }
+
         footer {
             background-color: #007bff;
             color: white;
             padding: 10px 0;
             text-align: center;
             width: 100%;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -87,13 +125,18 @@
                             <div class="teacher-info">
                                 <h2>Teacher</h2>
                                 <p>{{ classroom.teacher }}</p>
+                                <br>
+                                <br>
+                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success" id="addStudentBtn">Add Student</a>
+                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change Teacher</a>
+                                <a href="#" class="btn btn-danger" id="removeStudentBtn">Remove Student</a>
                             </div>
                             <div class="students-list">
                                 <h2>Students</h2>
                                 {% for student in classroom.students.all %}
-                                    <div class="student-item">
-                                        {{ student.name }}
-                                    </div>
+                                <div class="student-item">
+                                    {{ student.name }}
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm, ClassroomForm
+from .forms import RegisterForm, LoginForm, ClassroomForm, TeacherUpdateForm, StudentForm
 from .models import Classroom
 from django.contrib.auth.decorators import login_required
 
@@ -59,7 +59,8 @@ def home(request):
 
 def classroom_detail(request, classroom_id):
     classroom = get_object_or_404(Classroom, id=classroom_id)
-    return render(request, 'classroom_detail.html', {'classroom': classroom})
+    students = classroom.students.all()
+    return render(request, 'classroom_detail.html', {'classroom': classroom, 'students': students})
 
 
 def add_classroom(request):
@@ -79,3 +80,38 @@ def add_classroom(request):
         form = ClassroomForm()
 
     return render(request, 'add_classroom.html', {'form': form})
+
+
+@login_required
+def update_teacher(request, classroom_id):
+    classroom = Classroom.objects.get(pk=classroom_id)
+
+    if request.method == 'POST':
+        form = TeacherUpdateForm(request.POST, instance=classroom)
+        if form.is_valid():
+            form.save()
+            return redirect('classroom_detail',
+                            classroom_id=classroom.id)  # Ganti 'classroom_detail' dengan nama URL detail classroom Anda
+    else:
+        form = TeacherUpdateForm(instance=classroom)
+
+    return render(request, 'update_teacher.html', {'classroom': classroom, 'form': form})
+
+
+@login_required
+def add_student(request, classroom_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            student = form.save(commit=False)
+            student.classroom = classroom
+            student.save()
+            classroom.students.add(student)
+            return redirect('classroom_detail', classroom_id=classroom.id)
+    else:
+        form = StudentForm()
+
+    return render(request, 'add_student.html', {'form': form, 'classroom': classroom})
+

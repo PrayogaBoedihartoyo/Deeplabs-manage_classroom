@@ -11,4 +11,6 @@ urlpatterns = [
     path('home', home, name='home'),
     path('add_classroom/', add_classroom, name='add_classroom'),
     path('classroom/<int:classroom_id>/', classroom_detail, name='classroom_detail'),
+    path('classroom/<int:classroom_id>/update_teacher/', update_teacher, name='update_teacher'),
+    path('classroom/<int:classroom_id>/add_student/', add_student, name='add_student'),
 ]

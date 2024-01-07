@@ -44,3 +44,16 @@ class ClassroomForm(forms.ModelForm):
             classroom.save()
             self.save_m2m()
         return classroom
+
+
+class TeacherUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Classroom
+        fields = ['teacher']
+
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['name', 'email']
+
