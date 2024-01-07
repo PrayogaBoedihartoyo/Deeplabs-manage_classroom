@@ -3,73 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>List Classroom</title>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT" crossorigin="anonymous">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+            color: #495057;
+        }
+
+        header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            background-color: #3498db;
-            color: #fff;
-            overflow: hidden;
+            padding: 10px;
         }
 
-        .container {
+        .logout-btn {
+            margin-right: 10px;
+            margin-left: auto;
+            border: 2px solid #dc3545;
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: #dc3545;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .feature {
             text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
+            padding: 50px 20px;
         }
 
-        h1 {
-            font-size: 3em;
+        .feature-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .feature-content h1 {
+            color: #007bff;
+        }
+
+        .feature-content p {
+            font-size: 18px;
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.5em;
+        .cta {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        /* Animasi saat elemen muncul */
-        .container.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .cta:hover {
+            background-color: #0056b3;
         }
 
-        /* Animasi perubahan warna latar belakang */
-        @keyframes backgroundAnimation {
-            0% {
-                background-color: #3498db;
-            }
-            50% {
-                background-color: #e74c3c;
-            }
-            100% {
-                background-color: #3498db;
-            }
-        }
-
-        body {
-            animation: backgroundAnimation 10s infinite;
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p>Explore the world of possibilities!</p>
-    </div>
+<header>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}">Register</a>
+    {% endif %}
+</header>
+<main>
+    <section class="feature">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="feature-content">
+                        <h1>List Classroom</h1>
+                        <p>Here you can see all the classrooms that you have created.</p>
+                        <a class="btn btn-primary cta" href="#">Get Started</a>
+                    </div>
+                </div>
+                <img src="{% static 'images/feature.jpg' %}" alt="" class="feature-image">
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Manage Classroom | Deeplabs. All rights reserved.</p>
+</footer>
 
-    <script>
-        // Tambahkan script untuk menambahkan kelas 'visible' pada elemen container setelah halaman dimuat
-        document.addEventListener("DOMContentLoaded", function() {
-            var container = document.querySelector('.container');
-            container.classList.add('visible');
-        });
-    </script>
+<!-- Bootstrap JS and Popper.js (if needed) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-aXaEBIA3IR24sHd6Lv8XD5yn3B0CCG5N7YPQD9FZfflI+lwqO8XL4e5OjPTNQPr"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgydY6ZkJC+BNV/k58U6I7/vC6jzo0qK5TGn3l1L+oygFAWfnyI9p3ccHURv"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Site{% endblock %}</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT" crossorigin="anonymous">
 
     <!-- Bootstrap JS and Popper.js (if needed) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-aXaEBIA3IR24sHd6Lv8XD5yn3B0CCG5N7YPQD9FZfflI+lwqO8XL4e5OjPTNQPr" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgydY6ZkJC+BNV/k58U6I7/vC6jzo0qK5TGn3l1L+oygFAWfnyI9p3ccHURv" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+            integrity="sha384-aXaEBIA3IR24sHd6Lv8XD5yn3B0CCG5N7YPQD9FZfflI+lwqO8XL4e5OjPTNQPr"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgydY6ZkJC+BNV/k58U6I7/vC6jzo0qK5TGn3l1L+oygFAWfnyI9p3ccHURv"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-  	<header>
-  		{% if request.user.is_authenticated %}
-  			<a href="{% url 'logout' %}">Logout</a>
-  		{% else %}
-  			<a href="{% url 'login' %}">Login</a>
-  			<a href="{% url 'signup' %}">Register</a>
-  		{% endif %}
-  	</header>
-    <footer>
-        <!-- Include your footer content or links here -->
-        <p>&copy; 2022 My Site. All rights reserved.</p>
-    </footer>
+<header>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Register</a>
+    {% endif %}
+</header>
+<main>
+    <div class="container">
+        {%block content %}
+        {%endblock content%}
+    </div>
+</main>
+<footer>
+    <!-- Include your footer content or links here -->
+    <p>&copy; 2022 My Site. All rights reserved.</p>
+</footer>
 </body>
 </html>

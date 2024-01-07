@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
@@ -44,6 +44,12 @@ def signin(request):
         return render(request, '../templates/login.html', {'form': form})
 
 
-@login_required(login_url='/')
+def sign_out(request):
+    logout(request)
+    messages.success(request, f'You have been logged out.')
+    return redirect('login')
+
+
+@login_required()
 def home(request):
     return render(request, 'home.html')
