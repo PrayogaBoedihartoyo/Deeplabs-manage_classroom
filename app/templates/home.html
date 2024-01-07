@@ -81,6 +81,27 @@
             width: 100%;
             bottom: 0;
         }
+
+        .add-classroom-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .add-classroom-btn a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Warna latar belakang */
+            color: #fff; /* Warna teks */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Animasi warna latar belakang */
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1); /* Shadow */
+        }
+
+        .add-classroom-btn a:hover {
+            background-color: #0056b3; /* Warna latar belakang saat dihover */
+        }
     </style>
 </head>
 <body>
@@ -103,9 +124,12 @@
                         <div class="main">
                             <ul>
                                 {% for classroom in classrooms %}
-                                    <li><a href="{% url 'classroom_detail' classroom.id %}">{{ classroom.name }}</a>
-                                {% endfor %}
+                                <li><a href="{% url 'classroom_detail' classroom.id %}">{{ classroom.name }}</a>
+                                    {% endfor %}
                             </ul>
+                            <div class="add-classroom-btn">
+                                <a href="{% url 'add_classroom' %}" class="btn btn-primary"> + Add Classroom</a>
+                            </div>
                         </div>
                     </div>
                 </div>

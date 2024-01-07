@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Teacher, Student, Classroom
 
 
 class NewUserForm(UserCreationForm):
@@ -27,3 +28,19 @@ class RegisterForm(UserCreationForm):
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=65)
     password = forms.CharField(max_length=65, widget=forms.PasswordInput)
+
+
+class ClassroomForm(forms.ModelForm):
+    teacher = forms.ModelChoiceField(queryset=Teacher.objects.all(), empty_label="Select Teacher")
+    students = forms.ModelMultipleChoiceField(queryset=Student.objects.all(), required=False)
+
+    class Meta:
+        model = Classroom
+        fields = ['name', 'teacher', 'students']
+
+    def save(self, commit=True):
+        classroom = super().save(commit=False)
+        if commit:
+            classroom.save()
+            self.save_m2m()
+        return classroom
