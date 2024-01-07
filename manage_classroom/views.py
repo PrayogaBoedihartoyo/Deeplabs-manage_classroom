@@ -126,3 +126,14 @@ def delete_student(request, classroom_id, student_id):
         return redirect('classroom_detail', classroom_id=classroom.id)
 
     return render(request, 'delete_student.html', {'classroom': classroom, 'student': student})
+
+
+@login_required
+def delete_classroom(request, classroom_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+
+    if request.method == 'POST':
+        classroom.delete()
+        return redirect('home')
+
+    return render(request, 'delete_classroom.html', {'classroom': classroom})

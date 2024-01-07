@@ -163,10 +163,9 @@
                                 <p>{{ classroom.teacher }}</p>
                                 <br>
                                 <br>
-                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success"
-                                   id="addStudentBtn">Add Student</a>
-                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change
-                                    Teacher</a>
+                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success" id="addStudentBtn">Add Student</a>
+                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change Teacher</a>
+                                <a href="{% url 'delete_classroom' classroom.id %}" class="btn btn-danger">Delete Classroom</a>
                                 <a href="{% url 'home' %}" class="btn btn-back">Back to Classroom List</a>
                             </div>
                             <div class="students-list">
