@@ -129,7 +129,7 @@
             {{ form.email }}
         </div>
         <br>
-        <button type="submit">Save</button>
+        <button onclick="window.location.href = '{% url 'classroom_detail' classroom.id %}'" type="submit">Save</button>
         <button type="button" onclick="window.location.href = '{% url 'classroom_detail' classroom.id %}'" class="btn btn-danger">Cancel</button>
     </form>
     <!-- Bootstrap JS atau JS lainnya -->

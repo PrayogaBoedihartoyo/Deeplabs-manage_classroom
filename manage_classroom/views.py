@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm, ClassroomForm, TeacherUpdateForm, StudentForm
-from .models import Classroom
+from .models import *
 from django.contrib.auth.decorators import login_required
 
 
@@ -115,3 +115,14 @@ def add_student(request, classroom_id):
 
     return render(request, 'add_student.html', {'form': form, 'classroom': classroom})
 
+
+@login_required
+def delete_student(request, classroom_id, student_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+    student = get_object_or_404(Student, pk=student_id)
+
+    if request.method == 'POST':
+        classroom.students.remove(student)
+        return redirect('classroom_detail', classroom_id=classroom.id)
+
+    return render(request, 'delete_student.html', {'classroom': classroom, 'student': student})

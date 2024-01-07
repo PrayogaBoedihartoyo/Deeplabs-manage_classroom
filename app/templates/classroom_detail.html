@@ -6,6 +6,7 @@
     <title>{{ classroom.name }} Detail</title>
     {% load static %}
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
@@ -63,6 +64,16 @@
             background-color: #ffffff;
         }
 
+        .btn-back {
+            background-color: #778899;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
         .btn-primary {
             background-color: #FFA500;
             color: white;
@@ -72,6 +83,7 @@
             cursor: pointer;
             text-decoration: none;
         }
+
         .btn-success {
             background-color: #007bff;
             color: white;
@@ -98,6 +110,30 @@
             background-color: #0056b3;
             border-color: #0056b3;
             color: #fff;
+        }
+
+        .student-item {
+            border: 1px solid #dee2e6;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between; /* Ratakan elemen ke kanan */
+            align-items: center;
+        }
+
+        .student-item button {
+            background-color: #ffffff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .student-item button i {
+            margin-right: 5px;
         }
 
         footer {
@@ -127,15 +163,22 @@
                                 <p>{{ classroom.teacher }}</p>
                                 <br>
                                 <br>
-                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success" id="addStudentBtn">Add Student</a>
-                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change Teacher</a>
-                                <a href="#" class="btn btn-danger" id="removeStudentBtn">Remove Student</a>
+                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success"
+                                   id="addStudentBtn">Add Student</a>
+                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change
+                                    Teacher</a>
+                                <a href="{% url 'home' %}" class="btn btn-back">Back to Classroom List</a>
                             </div>
                             <div class="students-list">
                                 <h2>Students</h2>
                                 {% for student in classroom.students.all %}
-                                <div class="student-item">
+                                <div class="student-item text-right">
                                     {{ student.name }}
+                                    <button class="btn btn-link" onclick="deleteStudent({{ student.id }})">
+                                        <a href="{% url 'delete_student' classroom.id student.id %}">
+                                            <i class="fa fa-edit" style="border: none;"></i>
+                                        </a>
+                                    </button>
                                 </div>
                                 {% endfor %}
                             </div>
