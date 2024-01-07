@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
+from .models import Classroom
 
 
 def signup(request):
@@ -52,4 +53,5 @@ def sign_out(request):
 
 @login_required()
 def home(request):
-    return render(request, 'home.html')
+    context = {"dataset": Classroom.objects.all()}
+    return render(request, "home.html", context)

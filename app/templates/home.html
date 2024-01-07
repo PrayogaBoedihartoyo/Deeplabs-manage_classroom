@@ -22,10 +22,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px;
+            color: white;
         }
 
         .logout-btn {
-            margin-right: 10px;
             margin-left: auto;
             border: 2px solid #dc3545;
             padding: 5px 15px;
@@ -42,6 +42,7 @@
         .feature {
             text-align: center;
             padding: 50px 20px;
+            background-color: #ffffff;
         }
 
         .feature-content {
@@ -49,18 +50,26 @@
             margin: 0 auto;
         }
 
-        .feature img {
-            max-width: 35%;
-            height: auto;
+        .main ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .feature-content h1 {
+        .main ul li {
+            border: 1px solid #dee2e6;
+            margin-bottom: -1px;
+        }
+
+        .main ul li a {
+            text-decoration: none;
             color: #007bff;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
         }
 
-        .feature-content p {
-            font-size: 18px;
-            margin-bottom: 20px;
+        .main ul li a:hover {
+            background-color: #DCDCDC;
         }
 
         footer {
@@ -79,8 +88,8 @@
     {% if request.user.is_authenticated %}
     <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
     {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}">Register</a>
+    <a href="{% url 'login' %}" class="text-white">Login</a>
+    <a href="{% url 'signup' %}" class="text-white">Register</a>
     {% endif %}
 </header>
 <main>
@@ -91,9 +100,21 @@
                     <div class="feature-content">
                         <h1>List Classroom</h1>
                         <p>Here you can see all the classrooms that you have created.</p>
+                        <div class="main">
+                            <ul>
+                                <li><a href="#">Biology</a></li>
+                                <li><a href="#">Math</a></li>
+                                <li><a href="#">Physics</a></li>
+                                <li><a href="#">Chemistry</a></li>
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Geography</a></li>
+                                <li><a href="#">Computer Science</a></li>
+                                <li><a href="#">Economics</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <img src="{% static 'images/feature.jpg' %}" alt="" class="feature-image">
             </div>
         </div>
     </section>
@@ -107,10 +128,4 @@
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-        integrity="sha384-aXaEBIA3IR24sHd6Lv8XD5yn3B0CCG5N7YPQD9FZfflI+lwqO8XL4e5OjPTNQPr"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgydY6ZkJC+BNV/k58U6I7/vC6jzo0qK5TGn3l1L+oygFAWfnyI9p3ccHURv"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+        integrity="sha384-aXaEBIA3IR24sHd6Lv8XD5yn3B0CCG5N
