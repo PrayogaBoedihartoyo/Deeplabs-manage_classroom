@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
 from .models import Classroom
 
@@ -51,7 +50,11 @@ def sign_out(request):
     return redirect('login')
 
 
-@login_required()
 def home(request):
-    context = {"dataset": Classroom.objects.all()}
-    return render(request, "home.html", context)
+    classrooms = Classroom.objects.all()
+    return render(request, 'home.html', {'classrooms': classrooms})
+
+
+def classroom_detail(request, classroom_id):
+    classroom = get_object_or_404(Classroom, id=classroom_id)
+    return render(request, 'classroom_detail.html', {'classroom': classroom})

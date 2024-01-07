@@ -102,15 +102,9 @@
                         <p>Here you can see all the classrooms that you have created.</p>
                         <div class="main">
                             <ul>
-                                <li><a href="#">Biology</a></li>
-                                <li><a href="#">Math</a></li>
-                                <li><a href="#">Physics</a></li>
-                                <li><a href="#">Chemistry</a></li>
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">Geography</a></li>
-                                <li><a href="#">Computer Science</a></li>
-                                <li><a href="#">Economics</a></li>
+                                {% for classroom in classrooms %}
+                                    <li><a href="{% url 'classroom_detail' classroom.id %}">{{ classroom.name }}</a>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
