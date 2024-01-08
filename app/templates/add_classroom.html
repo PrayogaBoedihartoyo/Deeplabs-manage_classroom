@@ -115,17 +115,18 @@
 <form method="post">
     {% csrf_token %}
     <div class="form-group">
-        <label class="font-weight-bold text-primary">Classroom Name:</label>
+        <label class="font-weight-bold text-primary">Classroom Name :</label>
         {{ form.name }}
     </div>
     <br>
     <div class="form-group">
-        <label class="font-weight-bold text-primary">Teacher:</label>
+        <label class="font-weight-bold text-primary">Teacher :</label>
         {{ form.teacher }}
     </div>
     <br>
     <div class="form-group">
-        <label class="font-weight-bold text-primary">Students:</label>
+        <label class="font-weight-bold text-primary">Students :</label>
+        <label class="from-control">Hold Ctrl to select multiple students</label>
         {{ form.students }}
     </div>
     <br>

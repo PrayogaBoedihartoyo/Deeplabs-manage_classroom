@@ -182,3 +182,13 @@ def add_teacher(request, classroom_id):
         form = TeacherForm()
 
     return render(request, 'add_teacher.html', {'classroom': classroom, 'form': form})
+
+
+def delete_teacher(request, teacher_id):
+    teacher = get_object_or_404(Teacher, pk=teacher_id)
+
+    if request.method == 'POST':
+        teacher.delete()
+        return redirect('home')
+
+    return render(request, 'delete_teacher.html', {'teacher': teacher})
