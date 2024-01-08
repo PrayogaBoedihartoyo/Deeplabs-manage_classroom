@@ -154,7 +154,13 @@
 </head>
 <body>
 <header>
-    <!-- Your header content here -->
+    <div class="container" style="padding: 20px 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{% url 'home' %}" class="btn btn-back"><i class="fas fa-arrow-left"></i> Back to Classroom List</a>
+            </div>
+        </div>
+    </div>
 </header>
 <main class="main">
     <section class="feature">
@@ -169,11 +175,14 @@
                                 <p>{{ classroom.teacher }}</p>
                                 <br>
                                 <br>
-                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success" id="addStudentBtn">Add Student</a>
-                                <a href="{% url 'assign_student' classroom.id %}" class="btn btn-assign">Assign Students</a>
-                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Assign Teacher</a>
-                                <a href="{% url 'delete_classroom' classroom.id %}" class="btn btn-danger">Delete Classroom</a>
-                                <a href="{% url 'home' %}" class="btn btn-back">Back to Classroom List</a>
+                                <a href="{% url 'add_student' classroom.id %}" class="btn btn-success"
+                                   id="addStudentBtn">Add Student</a>
+                                <a href="{% url 'assign_student' classroom.id %}" class="btn btn-assign">Assign
+                                    Students</a>
+                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Assign
+                                    Teacher</a>
+                                <a href="{% url 'delete_classroom' classroom.id %}" class="btn btn-danger">Delete
+                                    Classroom</a>
                             </div>
                             <div class="students-list">
                                 <h2>Students</h2>
