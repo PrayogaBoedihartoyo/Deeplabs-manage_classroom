@@ -194,3 +194,16 @@ def delete_teacher(request, teacher_id):
         return HttpResponseRedirect('/teacher_list/')  # Redirect to the teacher list page after deletion
 
     return render(request, 'delete_teacher.html', {'teacher': teacher})
+
+
+def edit_teacher(request, teacher_id):
+    teacher = get_object_or_404(Teacher, pk=teacher_id)
+    if request.method == 'POST':
+        form = TeacherForm(request.POST, instance=teacher)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/teacher_list/')
+    else:
+        form = TeacherForm(instance=teacher)
+
+    return render(request, 'edit_teacher.html', {'form': form, 'teacher_id': teacher_id})
