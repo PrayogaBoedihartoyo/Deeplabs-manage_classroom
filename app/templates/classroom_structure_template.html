@@ -6,6 +6,30 @@
     <title>{{ classroom.name }} Structure</title>
     <!-- Tambahkan link ke CSS atau Bootstrap jika diperlukan -->
     <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 1px 3px 3px 3px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        form > h2 {
+            color: #0094ff;
+        }
+
+        form > p:first-child {
+            font-size: large;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
@@ -43,36 +67,43 @@
             bottom: 0;
             width: 100%;
         }
-
-        /* Tambahkan gaya lainnya sesuai kebutuhan */
-
     </style>
 </head>
 <body>
-    <header>
-        <h1>{{ classroom.name }} Structure</h1>
-    </header>
+<header>
+    <h1>{{ classroom.name }} Structure</h1>
+</header>
 
-    <h2>Teacher:</h2>
-    <div style="margin-left: 20px;">
-        <p><strong>Name:</strong> {{ teacher.name }}</p>
-        <p><strong>Email:</strong> {{ teacher.email }}</p>
-        <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
-    </div>
+<form class="form">
 
-    <h2>Students:</h2>
-    <div style="margin-left: 20px;">
+    <h2>{{ classroom.name }} Report</h2>
+    <h3>Classroom Information</h3>
+    <p>
+        <strong>Classroom Name :</strong> {{ classroom.name }}<br>
+        <strong>Classroom Teacher :</strong> {{ classroom.teacher }}<br>
+    </p>
+    <table>
+        <tbody>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
         {% for student in students %}
-            <p><strong>Name:</strong> {{ student.name }}</p>
-            <p><strong>Email:</strong> {{ student.email }}</p>
-            <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+        </tr>
         {% endfor %}
-    </div>
+        </tbody>
 
-    <!-- Tambahkan elemen HTML atau struktur lainnya sesuai kebutuhan -->
+    </table>
 
-    <footer>
-        <p>&copy; {{ classroom.name }} Classroom</p>
-    </footer>
+</form>
+
+<footer>
+    <p>&copy; {{ classroom.name }} Classroom</p>
+</footer>
 </body>
 </html>
