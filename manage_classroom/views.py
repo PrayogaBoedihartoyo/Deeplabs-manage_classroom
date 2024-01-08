@@ -6,6 +6,9 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 
 def signup(request):
@@ -207,3 +210,24 @@ def edit_teacher(request, teacher_id):
         form = TeacherForm(instance=teacher)
 
     return render(request, 'edit_teacher.html', {'form': form, 'teacher_id': teacher_id})
+
+
+def generate_classroom_pdf(request, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+    teacher = classroom.teacher
+    students = classroom.students.all()
+
+    template_path = '../templates/classroom_structure_template.html'
+    context = {'classroom': classroom, 'teacher': teacher, 'students': students}
+    template = get_template(template_path)
+    html = template.render(context)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{classroom.name}_structure.pdf"'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+
+    return response

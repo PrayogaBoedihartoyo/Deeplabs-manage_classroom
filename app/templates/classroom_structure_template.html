@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ classroom.name }} Structure</title>
+    <!-- Tambahkan link ke CSS atau Bootstrap jika diperlukan -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #007bff;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Tambahkan gaya lainnya sesuai kebutuhan */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ classroom.name }} Structure</h1>
+    </header>
+
+    <h2>Teacher:</h2>
+    <div style="margin-left: 20px;">
+        <p><strong>Name:</strong> {{ teacher.name }}</p>
+        <p><strong>Email:</strong> {{ teacher.email }}</p>
+        <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
+    </div>
+
+    <h2>Students:</h2>
+    <div style="margin-left: 20px;">
+        {% for student in students %}
+            <p><strong>Name:</strong> {{ student.name }}</p>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
+        {% endfor %}
+    </div>
+
+    <!-- Tambahkan elemen HTML atau struktur lainnya sesuai kebutuhan -->
+
+    <footer>
+        <p>&copy; {{ classroom.name }} Classroom</p>
+    </footer>
+</body>
+</html>

@@ -24,4 +24,6 @@ urlpatterns = [
     path('classroom/<int:classroom_id>/assign_student/', assign_student, name='assign_student'),
     path('classroom/<int:classroom_id>/delete_student/<int:student_id>/', delete_student, name='delete_student'),
     path('classroom/<int:classroom_id>/edit_student/<int:student_id>/', edit_student, name='edit_student'),
+
+    path('classroom/<int:classroom_id>/download-pdf/', generate_classroom_pdf, name='download_classroom_pdf'),
 ]
