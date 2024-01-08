@@ -44,14 +44,35 @@
         button:hover {
             background-color: #a82626;
         }
+
+        input[type=submit] {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-danger {
+            background-color: #008000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <h1>Delete Teacher</h1>
+
+    <p>Are you sure you want to delete {{ teacher.name }}?</p>
     <form method="post">
         {% csrf_token %}
-        <p>Are you sure you want to delete the teacher "{{ teacher.name }}"?</p>
-        <button type="submit">Delete Teacher</button>
+        <input type="submit" value="Delete">
+        <a href="{% url 'teacher_list' %}" class="btn btn-danger">Cancel</a>
     </form>
 
     <!-- Bootstrap JS atau JS lainnya -->

@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
@@ -168,27 +169,28 @@ def assign_student(request, classroom_id):
     return render(request, 'assign_student.html', {'classroom': classroom, 'students': students, 'form': form})
 
 
-def add_teacher(request, classroom_id):
-    classroom = get_object_or_404(Classroom, pk=classroom_id)
-
+def add_teacher(request):
     if request.method == 'POST':
         form = TeacherForm(request.POST)
         if form.is_valid():
             teacher = form.save(commit=False)
-            teacher.classroom = classroom
             teacher.save()
             return redirect('home')
     else:
         form = TeacherForm()
 
-    return render(request, 'add_teacher.html', {'classroom': classroom, 'form': form})
+    return render(request, 'add_teacher.html', {'form': form})
+
+
+def teacher_list(request):
+    teachers = Teacher.objects.all()
+    return render(request, 'teacher_list.html', {'teachers': teachers})
 
 
 def delete_teacher(request, teacher_id):
     teacher = get_object_or_404(Teacher, pk=teacher_id)
-
     if request.method == 'POST':
         teacher.delete()
-        return redirect('home')
+        return HttpResponseRedirect('/teacher_list/')  # Redirect to the teacher list page after deletion
 
     return render(request, 'delete_teacher.html', {'teacher': teacher})

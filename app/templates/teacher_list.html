@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Teachers</title>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #495057;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            /* Your header styles here */
+        }
+
+        main {
+            flex: 1;
+            padding: 50px 0;
+        }
+
+        .feature-content {
+            text-align: center;
+        }
+
+        .teacher-students {
+            display: flex;
+            justify-content: space-around; /* Mengubah space-between ke space-around agar lebih rapi */
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .teacher-info,
+        .students-list {
+            width: 48%; /* Sesuaikan dengan lebar yang diinginkan */
+            margin: 10px 0; /* Sesuaikan margin agar lebih rapi */
+            background-color: #d3d9df;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .teacher-info {
+            margin-right: 0;
+        }
+
+        .teacher-item {
+            border: 1px solid #dee2e6;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-kembali {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #FFA500;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover,
+        .btn-success:hover,
+        .btn-danger:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: #fff;
+        }
+
+        .teacher-item__actions {
+            margin-left: auto;
+        }
+
+        .teacher-item button {
+            background-color: #ffffff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .teacher-item button i {
+            margin-right: 5px;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+</header>
+<main class="main">
+    <section class="feature">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="feature-content">
+                        <h1>List Teachers</h1>
+                        <p>Here you can see all the teachers.</p>
+                        <div class="teacher-students">
+                            <div class="teacher-info">
+                                <h2>Teachers</h2>
+                                {% for teacher in teachers %}
+                                <div class="teacher-item text-right">
+                                    {{ teacher.name }}
+                                    <div class="teacher-item__actions">
+                                        <a href="{% url 'update_teacher' teacher.id %}"
+                                           class="btn btn-primary btn-edit">
+                                            <i class="fa fa-edit" style="border: none;"></i> Edit
+                                        </a>
+                                        <a href="{% url 'delete_teacher' teacher.id %}"
+                                           class="btn btn-danger btn-delete" style="margin-left: 5px;">
+                                            <i class="fa fa-trash" style="border: none;"></i> Delete
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="add-classroom-btn">
+                            <a href="{% url 'home' %}" class="btn btn-kembali">Back to list classroom</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="mt-4">
+    <div class="container">
+        <p>&copy; 2024 Manage Classroom | Deeplabs. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and Popper.js (if needed) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

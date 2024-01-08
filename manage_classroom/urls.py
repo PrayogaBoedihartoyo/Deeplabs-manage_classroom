@@ -14,8 +14,10 @@ urlpatterns = [
     path('classroom/<int:classroom_id>/', classroom_detail, name='classroom_detail'),
     path('classroom/<int:classroom_id>/delete_classroom/', delete_classroom, name='delete_classroom'),
 
-    path('classroom/<int:classroom_id>/add_teacher/', add_teacher, name='add_teacher'),
+    path('teacher_list/', teacher_list, name='teacher_list'),
+    path('add_teacher/', add_teacher, name='add_teacher'),
     path('classroom/<int:classroom_id>/update_teacher/', update_teacher, name='update_teacher'),
+    path('delete_teacher/<int:teacher_id>/', delete_teacher, name='delete_teacher'),
 
     path('classroom/<int:classroom_id>/add_student/', add_student, name='add_student'),
     path('classroom/<int:classroom_id>/assign_student/', assign_student, name='assign_student'),
