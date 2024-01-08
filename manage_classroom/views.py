@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm, ClassroomForm, TeacherUpdateForm, StudentForm
+from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
 
@@ -137,3 +137,48 @@ def delete_classroom(request, classroom_id):
         return redirect('home')
 
     return render(request, 'delete_classroom.html', {'classroom': classroom})
+
+
+def edit_student(request, classroom_id, student_id):
+    student = get_object_or_404(Student, pk=student_id)
+    if request.method == 'POST':
+        form = EditStudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('classroom_detail', classroom_id=classroom_id)
+    else:
+        form = EditStudentForm(instance=student)
+
+    return render(request, 'edit_student.html', {'form': form, 'classroom_id': classroom_id, 'student_id': student_id})
+
+
+def assign_student(request, classroom_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+    students = Student.objects.all()
+
+    if request.method == 'POST':
+        form = AssignStudentForm(request.POST)
+        if form.is_valid():
+            selected_students = form.cleaned_data['students']
+            classroom.students.add(*selected_students)
+            return redirect('classroom_detail', classroom_id=classroom.id)
+    else:
+        form = AssignStudentForm()
+
+    return render(request, 'assign_student.html', {'classroom': classroom, 'students': students, 'form': form})
+
+
+def add_teacher(request, classroom_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+
+    if request.method == 'POST':
+        form = TeacherForm(request.POST)
+        if form.is_valid():
+            teacher = form.save(commit=False)
+            teacher.classroom = classroom
+            teacher.save()
+            return redirect('home')
+    else:
+        form = TeacherForm()
+
+    return render(request, 'add_teacher.html', {'classroom': classroom, 'form': form})

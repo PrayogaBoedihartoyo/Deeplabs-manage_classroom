@@ -1,0 +1,114 @@
+<!-- add_teacher.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Teacher</title>
+    {% load static %}
+    <!-- Bootstrap CSS atau CSS lainnya -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"]{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px; /* Tambahkan margin bottom agar ada ruang di antara input fields */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus{
+            border-color: #0056b3;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        label {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-danger:hover {
+            background-color: #a82626;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Teacher to {{ classroom.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="font-weight-bold text-primary">Teacher Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold text-primary">Teacher Email:</label>
+            {{ form.email }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Teacher</button>
+        <a href="{% url 'home' %}" class="btn btn-danger">Cancel</a>
+    </form>
+
+    <!-- Bootstrap JS atau JS lainnya -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>
+</html>

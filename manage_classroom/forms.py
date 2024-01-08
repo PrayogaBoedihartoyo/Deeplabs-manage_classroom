@@ -57,3 +57,21 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ['name', 'email']
 
+
+class EditStudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['name', 'email']
+
+
+class AssignStudentForm(forms.Form):
+    students = forms.ModelMultipleChoiceField(
+        queryset=Student.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
+
+
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['name', 'email']

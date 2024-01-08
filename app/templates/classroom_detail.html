@@ -62,12 +62,15 @@
             padding: 10px;
             border-radius: 5px;
             background-color: #ffffff;
+            display: flex;
+            /*justify-content: space-between;*/
+            align-items: center;
         }
 
         .btn-back {
             background-color: #778899;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -77,7 +80,17 @@
         .btn-primary {
             background-color: #FFA500;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-assign {
+            background-color: #008B8B;
+            color: white;
+            padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -87,7 +100,7 @@
         .btn-success {
             background-color: #007bff;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -97,7 +110,7 @@
         .btn-danger {
             background-color: #dc3545;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -112,15 +125,8 @@
             color: #fff;
         }
 
-        .student-item {
-            border: 1px solid #dee2e6;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-between; /* Ratakan elemen ke kanan */
-            align-items: center;
+        .student-item__actions {
+            margin-left: auto;
         }
 
         .student-item button {
@@ -164,7 +170,8 @@
                                 <br>
                                 <br>
                                 <a href="{% url 'add_student' classroom.id %}" class="btn btn-success" id="addStudentBtn">Add Student</a>
-                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Change Teacher</a>
+                                <a href="{% url 'assign_student' classroom.id %}" class="btn btn-assign">Assign Students</a>
+                                <a href="{% url 'update_teacher' classroom.id %}" class="btn btn-primary">Assign Teacher</a>
                                 <a href="{% url 'delete_classroom' classroom.id %}" class="btn btn-danger">Delete Classroom</a>
                                 <a href="{% url 'home' %}" class="btn btn-back">Back to Classroom List</a>
                             </div>
@@ -173,11 +180,18 @@
                                 {% for student in classroom.students.all %}
                                 <div class="student-item text-right">
                                     {{ student.name }}
-                                    <button class="btn btn-link" onclick="deleteStudent({{ student.id }})">
-                                        <a href="{% url 'delete_student' classroom.id student.id %}">
-                                            <i class="fa fa-edit" style="border: none;"></i>
-                                        </a>
-                                    </button>
+                                    <div class="student-item__actions">
+                                        <button class="btn btn-link" onclick="editStudent({{ student.id }})">
+                                            <a href="{% url 'edit_student' classroom.id student.id %}">
+                                                <i class="fa fa-edit" style="border: none;"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-link" onclick="deleteStudent({{ student.id }})">
+                                            <a href="{% url 'delete_student' classroom.id student.id %}">
+                                                <i class="fa fa-trash" style="border: none;"></i>
+                                            </a>
+                                        </button>
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>

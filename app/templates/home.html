@@ -124,11 +124,16 @@
                         <div class="main">
                             <ul>
                                 {% for classroom in classrooms %}
-                                <li><a href="{% url 'classroom_detail' classroom.id %}">{{ classroom.name }}</a>
-                                    {% endfor %}
+                                <li><a href="{% url 'classroom_detail' classroom.id %}">{{ classroom.name }}</a></li>
+                                {% endfor %}
                             </ul>
                             <div class="add-classroom-btn">
-                                <a href="{% url 'add_classroom' %}" class="btn btn-primary"> + Add Classroom</a>
+                                <a href="{% url 'add_classroom' %}" class="btn btn-primary">+ Add Classroom</a>
+                                {% if classrooms %}
+                                <!-- Hanya menampilkan tautan Add Teacher jika ada setidaknya satu kelas di daftar -->
+                                <a href="{% url 'add_teacher' classroom_id=classrooms.0.id %}" class="btn btn-primary">+
+                                    Add Teacher</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

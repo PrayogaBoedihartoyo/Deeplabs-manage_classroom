@@ -1,0 +1,109 @@
+<!-- assign_student.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Students</title>
+    {% load static %}
+    <!-- Bootstrap CSS atau CSS lainnya -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-danger:hover {
+            background-color: #a82626;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assign Students to {{ classroom.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for student in students %}
+            <div class="form-group">
+                <label class="font-weight-bold text-primary">
+                    <input type="checkbox" name="students" value="{{ student.id }}">
+                    {{ student.name }}
+                </label>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Assign Students</button>
+        <button type="button" onclick="goBack()" class="btn btn-danger">Back</button>
+    </form>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <!-- Bootstrap JS atau JS lainnya -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>
+</html>

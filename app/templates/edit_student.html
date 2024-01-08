@@ -1,0 +1,135 @@
+<!-- edit_student.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    {% load static %}
+    <!-- Bootstrap CSS atau CSS lainnya -->
+    <!-- Tambahkan link ke CSS atau Bootstrap jika diperlukan -->
+</head>
+<style>
+            body {
+        background-color: #007bff; /* Warna biru sesuai tema */
+        color: white;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #fff; /* Warna tulisan putih */
+    }
+
+    form {
+        background-color: #fff; /* Warna latar belakang putih */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 1px solid #007bff; /* Tambahkan border dengan warna biru sesuai tema */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #007bff; /* Warna biru sesuai tema */
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-group input[type="text"], .form-group input[type="email"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="text"]:focus, .form-group input[type="email"]:focus {
+        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+    }
+
+    label {
+        color: #007bff; /* Warna biru sesuai tema */
+        font-weight: bold;
+    }
+
+    select.form-control {
+        color: #495057; /* Warna tulisan hitam pada select */
+    }
+
+    button {
+        background-color: #007bff; /* Warna biru sesuai tema */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* CSS untuk elemen formulir Teacher (dropdown/select) */
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-group select:focus {
+        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Warna biru sedikit lebih gelap saat dihover */
+    }
+
+    .form-group select[multiple] {
+        width: 100%;
+        min-height: 100px; /* Tinggi minimum area multi-select */
+        padding: 8px;
+        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-group select[multiple]:focus {
+        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    </style>
+<body>
+    <h1>Edit Student</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label>Date of Birth:</label>
+            {{ form.email }}
+        </div>
+        <button type="submit">Save Changes</button>
+        <button type="button" onclick="window.location.href = '{% url 'classroom_detail' classroom_id %}'" class="btn btn-danger">Cancel</button>
+    </form>
+</body>
+</html>
