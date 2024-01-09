@@ -1,4 +1,4 @@
-# Django Project README
+# Deeplabs Classroom Management
 
 ## Introduction
 
@@ -19,6 +19,12 @@ Before running the project, ensure you have the following prerequisites installe
 ## Setup Instructions
 
 1. **Clone the Repository:**
-   ```bash
+   ```
    git clone https://github.com/your-username/your-django-project.git
    cd your-django-project
+   ```
+2. **Create Virtual Environment:**
+```
+python -m venv venv
+```
+   
