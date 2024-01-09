@@ -19,12 +19,44 @@ Before running the project, ensure you have the following prerequisites installe
 ## Setup Instructions
 
 1. **Clone the Repository:**
-   ```
-   git clone https://github.com/your-username/your-django-project.git
-   cd your-django-project
-   ```
+```
+git clone https://github.com/your-username/your-django-project.git
+cd your-django-project
+```
 2. **Create Virtual Environment:**
 ```
 python -m venv venv
 ```
+3. **Activate Virtual Environment:**
+```
+source venv/bin/activate
+```
+4. **Install Dependencies:**
+```
+pip install -r requirements.txt
+```
+5. **Apply Migrations:**
+```
+python manage.py migrate
+```
+6. **Create Superuser:**
+```
+python manage.py createsuperuser
+```
+7. **Run the Development Server:**
+```
+python manage.py runserver
+```
+The development server will be available at http://127.0.0.1:8000/.
+
+## Project Structure
+The project structure is organized as follows:
+ classroom/: Main Django app containing models, views, and templates.
+ static/: Static files such as CSS and JavaScript.
+ templates/: HTML templates used in the project.
+ requirements.txt: List of project dependencies.
+
+## Additional Information 
+Feel free to explore and modify the project according to your learning objectives. This project is a learning resource and not intended for production use. If you encounter any issues or have suggestions for improvement, please create an issue in the repository.
+
    
