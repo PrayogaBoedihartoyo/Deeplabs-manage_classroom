@@ -27,9 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://hemant-to-do.herokuapp.com'
-]
+CSRF_TRUSTED_ORIGINS = ['*']
 
 APPEND_SLASH = False
 # Application definition
