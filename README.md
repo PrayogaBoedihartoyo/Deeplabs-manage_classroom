@@ -72,3 +72,8 @@ allready deploy on this link from my aws billing payment:
 
 https://www.curvy-cows-itch-quickly.a276.dcdg.xyz
    
+## Superuser Existing
+```
+username : admin
+password : admin123
+```
