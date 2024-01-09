@@ -24,7 +24,7 @@ def signup(request):
             user.save()
             messages.success(request, 'You have singed up successfully.')
             login(request, user)
-            return redirect('posts')
+            return redirect('login')
         else:
             return render(request, '../templates/signup.html', {'form': form})
 
