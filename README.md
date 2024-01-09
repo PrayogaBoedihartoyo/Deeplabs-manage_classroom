@@ -1,28 +1,14 @@
-#!/bin/bash
+Django Project README
+Introduction
 
-echo "Setting up Django Project..."
+This Django project is created to enhance skills and acquire new abilities in web development. The purpose is not for any specific selection process or company application. The project focuses on implementing various features using the Django framework, contributing to personal growth and proficiency in building web applications.
+Project Overview
 
-# Clone the Repository
-git clone https://github.com/your-username/your-django-project.git
-cd your-django-project
+The project demonstrates a practical understanding of Django, a high-level Python web framework. It encompasses the development of a classroom management system where users can manage classes, students, and assignments.
+Prerequisites
 
-# Create Virtual Environment
-python -m venv venv
+Before running the project, ensure you have the following prerequisites installed on your system:
 
-# Activate Virtual Environment
-source venv/bin/activate
-
-# Install Dependencies
-pip install -r requirements.txt
-
-# Apply Migrations
-python manage.py migrate
-
-# Create Superuser
-python manage.py createsuperuser
-
-# Run the Development Server
-python manage.py runserver
-
-echo "Django Project setup completed."
-echo "Visit http://127.0.0.1:8000/ to access the development server."
+    Python (version 3.6 or higher)
+    Django (install using pip install django)
+    Additional dependencies (install using pip install -r requirements.txt)
