@@ -2,7 +2,6 @@ from django.urls import path
 from django.contrib import admin
 from .views import *
 
-
 urlpatterns = [
     path('admin', admin.site.urls),
     path('', signin, name='login'),
@@ -27,3 +26,5 @@ urlpatterns = [
 
     path('classroom/<int:classroom_id>/download-pdf/', generate_classroom_pdf, name='download_classroom_pdf'),
 ]
+
+handler404 = 'manage_classroom.views.handler404'

@@ -231,3 +231,7 @@ def generate_classroom_pdf(request, classroom_id):
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
 
     return response
+
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
