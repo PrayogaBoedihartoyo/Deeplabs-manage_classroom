@@ -5,26 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Teacher</title>
     {% load static %}
-    <!-- Bootstrap CSS atau CSS lainnya -->
-    <!-- Tambahkan link ke CSS atau Bootstrap jika diperlukan -->
+
 </head>
 <style>
             body {
-        background-color: #007bff; /* Warna biru sesuai tema */
+        background-color: #007bff;
         color: white;
         padding: 20px;
     }
 
     h1 {
-        color: #fff; /* Warna tulisan putih */
+        color: #fff;
     }
 
     form {
-        background-color: #fff; /* Warna latar belakang putih */
+        background-color: #fff;
         padding: 20px;
         border-radius: 10px;
         margin-top: 20px;
-        border: 1px solid #007bff; /* Tambahkan border dengan warna biru sesuai tema */
+        border: 1px solid #007bff;
     }
 
     .form-group {
@@ -33,7 +32,7 @@
 
     .form-group label {
         font-weight: bold;
-        color: #007bff; /* Warna biru sesuai tema */
+        color: #007bff;
         margin-bottom: 8px;
         display: block;
     }
@@ -41,28 +40,28 @@
     .form-group input[type="text"], .form-group input[type="email"] {
         width: 100%;
         padding: 8px;
-        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border: 1px solid #ced4da;
         border-radius: 4px;
         box-sizing: border-box;
     }
 
     .form-group input[type="text"]:focus, .form-group input[type="email"]:focus {
-        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        border-color: #0056b3;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 
     label {
-        color: #007bff; /* Warna biru sesuai tema */
+        color: #007bff;
         font-weight: bold;
     }
 
     select.form-control {
-        color: #495057; /* Warna tulisan hitam pada select */
+        color: #495057;
     }
 
     button {
-        background-color: #007bff; /* Warna biru sesuai tema */
+        background-color: #007bff;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -70,38 +69,37 @@
         cursor: pointer;
     }
 
-    /* CSS untuk elemen formulir Teacher (dropdown/select) */
     .form-group select {
         width: 100%;
         padding: 8px;
-        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border: 1px solid #ced4da;
         border-radius: 4px;
         box-sizing: border-box;
     }
 
     .form-group select:focus {
-        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        border-color: #0056b3;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 
     button:hover {
-        background-color: #0056b3; /* Warna biru sedikit lebih gelap saat dihover */
+        background-color: #0056b3;
     }
 
     .form-group select[multiple] {
         width: 100%;
-        min-height: 100px; /* Tinggi minimum area multi-select */
+        min-height: 100px;
         padding: 8px;
-        border: 1px solid #ced4da; /* Warna garis sesuai tema */
+        border: 1px solid #ced4da;
         border-radius: 4px;
         box-sizing: border-box;
     }
 
     .form-group select[multiple]:focus {
-        border-color: #0056b3; /* Warna biru sedikit lebih gelap saat difokuskan */
+        border-color: #0056b3;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efek shadow saat difokuskan */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 
     .btn-danger {

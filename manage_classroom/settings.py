@@ -23,11 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mh(-gw9q)3@#npy(6(305jldwi_ll4t8ey++)b5!qy-3e+$qyz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://hemant-to-do.herokuapp.com',
+    'https://curvy-cows-itch-quickly.a276.dcdg.xyz',
+]
 
 APPEND_SLASH = False
 # Application definition

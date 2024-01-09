@@ -95,7 +95,7 @@ def update_teacher(request, classroom_id):
         if form.is_valid():
             form.save()
             return redirect('classroom_detail',
-                            classroom_id=classroom.id)  # Ganti 'classroom_detail' dengan nama URL detail classroom Anda
+                            classroom_id=classroom.id)
     else:
         form = TeacherUpdateForm(instance=classroom)
 
@@ -194,7 +194,7 @@ def delete_teacher(request, teacher_id):
     teacher = get_object_or_404(Teacher, pk=teacher_id)
     if request.method == 'POST':
         teacher.delete()
-        return HttpResponseRedirect('/teacher_list/')  # Redirect to the teacher list page after deletion
+        return HttpResponseRedirect('/teacher_list/')
 
     return render(request, 'delete_teacher.html', {'teacher': teacher})
 

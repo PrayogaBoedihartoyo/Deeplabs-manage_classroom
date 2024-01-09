@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remove Student</title>
     {% load static %}
-    <!-- Bootstrap CSS atau CSS lainnya -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <style>
         body {
-            background-color: #007bff; /* Warna biru sesuai tema */
+            background-color: #007bff;
             color: white;
             padding: 20px;
         }
 
         h1 {
-            color: #fff; /* Warna tulisan putih */
+            color: #fff;
         }
 
         form {
-            background-color: #fff; /* Warna latar belakang putih */
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
@@ -29,13 +29,13 @@
 
         .form-group label {
             font-weight: bold;
-            color: #007bff; /* Warna biru sesuai tema */
+            color: #007bff;
             margin-bottom: 8px;
             display: block;
         }
 
         button {
-            background-color: #007bff; /* Warna biru sesuai tema */
+            background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -44,7 +44,7 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* Warna biru sedikit lebih gelap saat dihover */
+            background-color: #0056b3;
         }
 
         .btn-danger {
@@ -68,7 +68,6 @@
         <a href="{% url 'classroom_detail' classroom_id=classroom.id %}" class="btn btn-danger">Cancel</a>
     </form>
 
-    <!-- Bootstrap JS atau JS lainnya -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
