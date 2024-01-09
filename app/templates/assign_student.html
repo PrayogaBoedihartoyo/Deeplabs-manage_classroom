@@ -83,6 +83,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .btn-danger:hover {
@@ -96,7 +97,7 @@
     {% csrf_token %}
     <div class="form-group">
         <label class="from-control">Hold Ctrl to select multiple students</label>
-        <select name="students[]" multiple>
+        <select name="students" multiple>
             {% for student in students %}
             <option value="{{ student.id }}">{{ student.name }}</option>
             {% endfor %}
@@ -104,14 +105,9 @@
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Assign Students</button>
-    <button type="button" onclick="goBack()" class="btn btn-danger">Back</button>
+    <a href="{% url 'classroom_detail' classroom_id=classroom.id %}" class="btn btn-danger">Back</a>
 </form>
 
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
