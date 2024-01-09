@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Django project is designed to enhance skills and gain proficiency in web development. It is not intended for any specific selection process or company application. The project focuses on implementing various features using the Django framework, contributing to personal growth in building web applications.
+This project is designed to enhance skills and gain proficiency in web development. It is not intended for any specific selection process or company application. The project focuses on implementing various features using the Django framework, contributing to personal growth in building web applications. My name is Prayoga Boedihartoyo and still continouing add more skill for myself.
 
 ## Project Overview
 
@@ -47,6 +47,10 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
+8. **Access Admin Panel:**
+
+Navigate to http://127.0.0.1:8000/admin/ and log in using the superuser credentials created earlier.
+
 The development server will be available at http://127.0.0.1:8000/.
 
 ## Project Structure
@@ -59,4 +63,7 @@ The project structure is organized as follows:
 ## Additional Information 
 Feel free to explore and modify the project according to your learning objectives. This project is a learning resource and not intended for production use. If you encounter any issues or have suggestions for improvement, please create an issue in the repository.
 
+## Deployment
+allready deploy on this link from my aws billing payment:
+curvy-cows-itch-quickly.a276.dcdg.xyz
    
