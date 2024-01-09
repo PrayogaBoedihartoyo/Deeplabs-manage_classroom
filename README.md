@@ -65,5 +65,6 @@ Feel free to explore and modify the project according to your learning objective
 
 ## Deployment
 allready deploy on this link from my aws billing payment:
-curvy-cows-itch-quickly.a276.dcdg.xyz
+
+(https://www.curvy-cows-itch-quickly.a276.dcdg.xyz/)
    
