@@ -57,13 +57,10 @@ The development server will be available at http://127.0.0.1:8000/.
 The project structure is organized as follows:
 
  classroom/: Main Django app containing models, views, and templates.
-
  
  static/: Static files such as CSS and JavaScript.
  
- 
  templates/: HTML templates used in the project.
- 
  
  requirements.txt: List of project dependencies.
 
