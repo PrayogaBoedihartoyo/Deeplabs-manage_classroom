@@ -19,34 +19,34 @@ Before running the project, ensure you have the following prerequisites installe
 ## Setup Instructions
 
 1. **Clone the Repository:**
-```
-git clone https://github.com/your-username/your-django-project.git
-cd your-django-project
-```
+  ```
+  git clone https://github.com/your-username/your-django-project.git
+  cd your-django-project
+  ```
 2. **Create Virtual Environment:**
-```
-python -m venv venv
-```
+  ```
+  python -m venv venv
+  ```
 3. **Activate Virtual Environment:**
-```
-source venv/bin/activate
-```
+  ```
+  source venv/bin/activate
+  ```
 4. **Install Dependencies:**
-```
-pip install -r requirements.txt
-```
+  ```
+  pip install -r requirements.txt
+  ```
 5. **Apply Migrations:**
-```
-python manage.py migrate
-```
+  ```
+  python manage.py migrate
+  ```
 6. **Create Superuser:**
-```
-python manage.py createsuperuser
-```
+  ```
+  python manage.py createsuperuser
+  ```
 7. **Run the Development Server:**
-```
-python manage.py runserver
-```
+  ```
+  python manage.py runserver
+  ```
 8. **Access Admin Panel:**
 
 Navigate to http://127.0.0.1:8000/admin/ and log in using the superuser credentials created earlier.
