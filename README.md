@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project is designed to enhance skills and gain proficiency in web development. It is not intended for any specific selection process or company application. The project focuses on implementing various features using the Django framework, contributing to personal growth in building web applications. My name is Prayoga Boedihartoyo and still continouing add more skill for myself.
+This project is designed to enhance skills and gain proficiency in web development. It is not intended for any specific selection process or company application. The project focuses on implementing various features using the Django framework, contributing to personal growth in building web applications. My name is Prayoga Boedihartoyo and still continouing add more skill for myself. I so appreciate for Deeplabs company that had make me improve my skill to building fascinating web application with django framework, I got more skill and framework is because of your technical test. Lol :)
 
 ## Project Overview
 
